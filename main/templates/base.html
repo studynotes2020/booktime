@@ -28,10 +28,22 @@
       </ul>
     </div>
   </nav>
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+  {% endfor %}
+  {% if request.basket %}
+    <div>
+      {{ request.basket.count }}
+      items in basket
+    </div>
+  {% endif %}
+
   {% block content %}
   {% endblock content %}
   <script src="{% static 'js/jquery.min.js' %}"></script>
   <script src="{% static 'js/popper.min.js' %}"></script>
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  {% block js %}
+  {% endblock js %}
 </body>
 </html>
